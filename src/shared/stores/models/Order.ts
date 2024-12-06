@@ -1,4 +1,5 @@
-import { makeAutoObservable } from 'mobx';
+import { getDateHuman } from '@shared/helpers/date';
+import { computed, makeAutoObservable } from 'mobx';
 import { v4 as uuidv4 } from 'uuid';
 
 export enum ORDER_STATUS {
@@ -24,5 +25,10 @@ export class Order {
 
   updateStatus(status: ORDER_STATUS) {
     this.status = status;
+  }
+
+  @computed
+  get createdDate(): string {
+    return getDateHuman(this.createdAt);
   }
 }
