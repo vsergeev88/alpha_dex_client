@@ -25,7 +25,9 @@
     /* Aliases */
     "baseUrl": "./src",
     "paths": {
-      "@widgets/*": ["widgets/*"]
+      "@pages/*": ["pages/*"],
+      "@widgets/*": ["widgets/*"],
+      "@shared/*": ["shared/*"]
     }
   },
   "include": ["src"]

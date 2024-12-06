@@ -1,9 +1,14 @@
-import CreateOrder from '../pages/create-order';
+import { RootStoreContext } from '@shared/stores/useStores';
+import CreateOrder from '@pages/create-order';
 import './App.css';
+import { rooStore } from '@shared/stores/rootStore';
 
 function App() {
-  // TODO: implement routing in case of multiple pages
-  return <CreateOrder />;
+  return (
+    <RootStoreContext.Provider value={rooStore}>
+      <CreateOrder />
+    </RootStoreContext.Provider>
+  );
 }
 
 export default App;

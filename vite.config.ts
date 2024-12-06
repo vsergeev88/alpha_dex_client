@@ -7,7 +7,9 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      '@widgets': path.resolve(__dirname, 'src/widgets'), // Задайте путь к вашей папке widgets
+      '@pages': path.resolve(__dirname, 'src/pages'),
+      '@widgets': path.resolve(__dirname, 'src/widgets'),
+      '@shared': path.resolve(__dirname, 'src/shared'),
     },
   },
 });
