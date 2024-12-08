@@ -7,8 +7,7 @@ const OrdersList: React.FC = observer(() => {
 
   return (
     <div className="">
-      <h2>Listed Tokens:</h2>
-      <div className="flex flex-col-reverse gap-2 justify-between">
+      <div className="flex flex-col-reverse gap-8 justify-between">
         {ordersStore.listedOrders.map((order) => (
           <OrderCard order={order} key={order.id} />
         ))}

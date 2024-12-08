@@ -1,3 +1,4 @@
+import { round } from '@shared/helpers/number';
 import { useStores } from '@shared/stores/useStores';
 import { useEffect } from 'react';
 
@@ -20,8 +21,6 @@ export const useRateRecalculation = ({
   const {
     tokenRateStore: { tokenRate },
   } = useStores();
-
-  const round = (value: number) => Math.round(value * 10000) / 10000;
 
   useEffect(() => {
     if (dollarsInputRef.current !== document.activeElement || !amountDollars) {

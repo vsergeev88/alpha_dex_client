@@ -11,10 +11,10 @@ const TokenRate: React.FC = observer(() => {
     <div className="stats">
       <div className="stat">
         <div className="stat-title">Текущий курс</div>
-        <div className="stat-value">
+        <div className="stat-value text-secondary">
           1 TKN ={' '}
           {tokenRate ? (
-            `$ ${tokenRate}`
+            `${tokenRate} USD`
           ) : (
             <span className="loading loading-dots loading-md"></span>
           )}

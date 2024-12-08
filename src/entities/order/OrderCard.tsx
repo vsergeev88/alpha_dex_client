@@ -1,3 +1,4 @@
+import { round } from '@shared/helpers/number';
 import { Order, ORDER_STATUS } from '@shared/stores/models/Order';
 import { observer } from 'mobx-react-lite';
 
@@ -12,11 +13,18 @@ const OrderCard: React.FC<TProps> = observer(({ order }) => {
   };
 
   return (
-    <div>
-      <div className={`badge ${STATUS_CLASS[status]} gap-2`}>{status}</div>
-      <p>{amountTokens}</p>
-      <p>{amountDollars}</p>
-      <p>{createdDate}</p>
+    <div className="card bg-secondary text-primary-content w-full">
+      <div className="card-body">
+        <div className="flex justify-between items-center">
+          <p className="text-md text-secondary-content">{createdDate}</p>
+          <div className={`badge ${STATUS_CLASS[status]} gap-2 ml-auto`}>
+            {status}
+          </div>
+        </div>
+        <h2 className="card-title">
+          {round(amountTokens)} TKN за {round(amountDollars)} USD
+        </h2>{' '}
+      </div>
     </div>
   );
 });

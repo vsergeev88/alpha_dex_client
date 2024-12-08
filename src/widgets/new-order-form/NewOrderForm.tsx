@@ -68,22 +68,21 @@ const NewOrderForm: React.FC = observer(() => {
             label="Количество токенов"
             ref={tokensInputRef}
             {...commonInputProps}
-            placeholder="tokens"
+            placeholder="TKN"
             value={amountTokens ?? ''}
             onFocus={() =>
               (lastActiveInputRef.current = tokensInputRef.current)
             }
             onChange={(e) => setAmountTokens(parseFloat(e.target.value))}
           />
-          <IconButton
-            className="btn-accent"
-            onClick={switchInput}
-          >{`<->`}</IconButton>
+          <IconButton className="btn-accent mt-8" onClick={switchInput}>
+            {`<->`}
+          </IconButton>
           <AccentInput
             label="Сумма в долларах"
             ref={dollarsInputRef}
             {...commonInputProps}
-            placeholder="dollars"
+            placeholder="USD"
             value={amountDollars ?? ''}
             onFocus={() =>
               (lastActiveInputRef.current = dollarsInputRef.current)
