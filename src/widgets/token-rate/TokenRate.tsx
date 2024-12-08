@@ -8,9 +8,17 @@ const TokenRate: React.FC = observer(() => {
   } = useStores();
 
   return (
-    <div>
-      <h2>Current Token Rate</h2>
-      <p>{tokenRate ? `${tokenRate} USD` : 'Loading...'}</p>
+    <div className="stats shadow">
+      <div className="stat">
+        <div className="stat-title">Current rate</div>
+        <div className="stat-value">
+          {tokenRate ? (
+            `$ ${tokenRate}`
+          ) : (
+            <span className="loading loading-dots loading-md"></span>
+          )}
+        </div>
+      </div>
     </div>
   );
 });

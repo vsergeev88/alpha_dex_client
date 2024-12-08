@@ -6,7 +6,9 @@ import { rooStore } from '@shared/stores/rootStore';
 function App() {
   return (
     <RootStoreContext.Provider value={rooStore}>
-      <CreateOrder />
+      <div data-theme="synthwave">
+        <CreateOrder />
+      </div>
     </RootStoreContext.Provider>
   );
 }

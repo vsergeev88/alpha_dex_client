@@ -5,14 +5,14 @@ import OrderCard from '@entities/order';
 const OrdersList: React.FC = observer(() => {
   const { ordersStore } = useStores();
 
-  console.log('ordersStore', ordersStore.listedOrders);
-
   return (
     <div className="">
       <h2>Listed Tokens:</h2>
-      {ordersStore.listedOrders.map((order) => (
-        <OrderCard order={order} key={order.id} />
-      ))}
+      <div className="flex flex-col-reverse gap-2 justify-between">
+        {ordersStore.listedOrders.map((order) => (
+          <OrderCard order={order} key={order.id} />
+        ))}
+      </div>
     </div>
   );
 });

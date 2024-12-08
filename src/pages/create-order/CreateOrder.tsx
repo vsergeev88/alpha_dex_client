@@ -8,12 +8,16 @@ const CreateOrder: React.FC = observer(() => {
   useSocketsApi();
 
   return (
-    <div className="">
-      <h1>Create order</h1>
-      <TokenRate />
-      <NewOrderForm />
-      <OrderList />
-    </div>
+    <main className="flex justify-center w-full">
+      <div className="max-w-[600px] flex flex-col gap-10">
+        <h1 className="text-3xl font-bold underline text-center my-4">
+          Hello Alpha DEX!
+        </h1>
+        <TokenRate />
+        <NewOrderForm />
+        <OrderList />
+      </div>
+    </main>
   );
 });
 
