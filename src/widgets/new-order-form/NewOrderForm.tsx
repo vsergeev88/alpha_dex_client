@@ -1,4 +1,4 @@
-import { useStores } from '@shared/stores/useStores';
+import { useStores } from '@features/rootStore/useStores';
 import { AccentButton, IconButton } from '@shared/ui/button';
 import { AccentInput } from '@shared/ui/input';
 import { observer } from 'mobx-react-lite';

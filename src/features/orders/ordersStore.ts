@@ -1,5 +1,5 @@
 import { makeAutoObservable, flow } from 'mobx';
-import { Order, IOrder } from './models/Order';
+import { Order, IOrder } from '../../entities/order/OrderModel';
 import { ORDERS_SERVICE_URL } from '@shared/constants/urls';
 
 const POST_ORDER_URL = `${ORDERS_SERVICE_URL}/orders`;

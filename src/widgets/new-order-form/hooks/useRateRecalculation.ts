@@ -1,5 +1,5 @@
 import { round } from '@shared/helpers/number';
-import { useStores } from '@shared/stores/useStores';
+import { useStores } from '@features/rootStore/useStores';
 import { useEffect } from 'react';
 
 export type TUseRateRecalculationProps = {

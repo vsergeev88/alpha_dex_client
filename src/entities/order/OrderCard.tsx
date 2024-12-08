@@ -1,5 +1,5 @@
 import { round } from '@shared/helpers/number';
-import { Order, ORDER_STATUS } from '@shared/stores/models/Order';
+import { Order, ORDER_STATUS } from '@entities/order/OrderModel';
 import { observer } from 'mobx-react-lite';
 
 type TProps = { order: Order };

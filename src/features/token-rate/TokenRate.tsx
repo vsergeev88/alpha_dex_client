@@ -1,4 +1,4 @@
-import { useStores } from '@shared/stores/useStores';
+import { useStores } from '@features/rootStore/useStores';
 import { observer } from 'mobx-react-lite';
 import React from 'react';
 

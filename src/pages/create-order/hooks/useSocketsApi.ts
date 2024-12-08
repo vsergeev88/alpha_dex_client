@@ -1,6 +1,6 @@
 import { ORDERS_SERVICE_URL } from '@shared/constants/urls';
-import { IOrder, Order } from '@shared/stores/models/Order';
-import { useStores } from '@shared/stores/useStores';
+import { IOrder, Order } from '@entities/order/OrderModel';
+import { useStores } from '@features/rootStore/useStores';
 import { useEffect } from 'react';
 import { io } from 'socket.io-client';
 

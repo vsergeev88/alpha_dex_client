@@ -1,6 +1,6 @@
 import { makeAutoObservable } from 'mobx';
-import OrdersStore from './ordersStore';
-import TokenRateStore from './tokenRateStore';
+import OrdersStore from '@features/orders/ordersStore';
+import TokenRateStore from '@features/token-rate/tokenRateStore';
 
 class RootStore {
   ordersStore: OrdersStore;

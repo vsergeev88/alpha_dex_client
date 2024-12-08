@@ -1,7 +1,6 @@
-import { RootStoreContext } from '@shared/stores/useStores';
+import { RootStoreContext } from '@features/rootStore/useStores';
 import CreateOrder from '@pages/create-order';
-import './App.css';
-import { rooStore } from '@shared/stores/rootStore';
+import { rooStore } from '../features/rootStore/rootStore';
 
 function App() {
   return (

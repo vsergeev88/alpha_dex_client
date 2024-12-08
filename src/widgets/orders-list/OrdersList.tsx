@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite';
-import { useStores } from '@shared/stores/useStores';
+import { useStores } from '@features/rootStore/useStores';
 import OrderCard from '@entities/order';
 
 const OrdersList: React.FC = observer(() => {
