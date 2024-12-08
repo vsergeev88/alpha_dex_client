@@ -1,18 +1,17 @@
 import { observer } from 'mobx-react-lite';
 import { useStores } from '@shared/stores/useStores';
+import OrderCard from '@entities/order';
 
 const OrdersList: React.FC = observer(() => {
   const { ordersStore } = useStores();
 
+  console.log('ordersStore', ordersStore.listedOrders);
+
   return (
     <div className="">
+      <h2>Listed Tokens:</h2>
       {ordersStore.listedOrders.map((order) => (
-        <div key={order.id}>
-          <p>{order.tokenAmount}</p>
-          <p>{order.dollarAmount}</p>
-          <p>{order.status}</p>
-          <p>{order.createdDate}</p>
-        </div>
+        <OrderCard order={order} key={order.id} />
       ))}
     </div>
   );

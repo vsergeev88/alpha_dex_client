@@ -1,34 +1,41 @@
 import { getDateHuman } from '@shared/helpers/date';
-import { computed, makeAutoObservable } from 'mobx';
-import { v4 as uuidv4 } from 'uuid';
+import { makeAutoObservable } from 'mobx';
 
 export enum ORDER_STATUS {
-  IN_PROGRESS = 'In Progress',
   COMPLETED = 'Completed',
+  PROCESSING = 'Processing',
+}
+
+export interface IOrder {
+  id: number;
+  amountDollars: number;
+  amountTokens: number;
+  status: ORDER_STATUS;
+  createdAt: string;
 }
 
 export class Order {
-  id: string;
-  tokenAmount: number;
-  dollarAmount: number;
+  id: number;
+  amountDollars: number;
+  amountTokens: number;
   status: ORDER_STATUS;
-  createdAt: Date;
+  createdAt: string;
 
-  constructor(args: { tokenAmount: number; dollarAmount: number }) {
-    this.id = uuidv4();
-    this.tokenAmount = args.tokenAmount;
-    this.dollarAmount = args.dollarAmount;
-    this.status = ORDER_STATUS.IN_PROGRESS;
-    this.createdAt = new Date();
+  constructor(args: IOrder) {
+    this.id = args.id;
+    this.amountTokens = args.amountTokens;
+    this.amountDollars = args.amountDollars;
+    this.status = args.status;
+    this.createdAt = args.createdAt;
     makeAutoObservable(this);
   }
 
   updateStatus(status: ORDER_STATUS) {
+    console.log('updateStatus', status);
     this.status = status;
   }
 
-  @computed
   get createdDate(): string {
-    return getDateHuman(this.createdAt);
+    return getDateHuman(new Date(this.createdAt));
   }
 }

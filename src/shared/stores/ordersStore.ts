@@ -7,12 +7,17 @@ class OrdersStore {
     makeAutoObservable(this);
   }
 
-  addOrder(order: Order) {
-    this.listedOrders.push(order);
+  getOrderById(orderId: number): Order | null {
+    console.log('getOrderById', orderId, this.listedOrders);
+    return this.listedOrders.find((o) => o.id === orderId) ?? null;
   }
 
-  removeOrder(orderId: string) {
-    this.listedOrders = this.listedOrders.filter((o) => o.id !== orderId);
+  setOrders(orders: Order[]) {
+    this.listedOrders = orders;
+  }
+
+  addOrder(order: Order) {
+    this.listedOrders.push(order);
   }
 }
 export const ordersStore = new OrdersStore();

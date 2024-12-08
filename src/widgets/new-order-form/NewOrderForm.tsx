@@ -5,34 +5,57 @@ import React, { useState } from 'react';
 
 const NewOrderForm: React.FC = observer(() => {
   const { ordersStore } = useStores();
-  const [tokenAmount, setTokenAmount] = useState('0');
-  const [dollarAmount, setDollarAmount] = useState('0');
+  const [amountTokens, setAmountTokens] = useState('0');
+  const [amountDollars, setAmountDollars] = useState('0');
 
-  const createOrder = (e: React.FormEvent) => {
-    e.preventDefault();
-    const newOrder = new Order({
-      tokenAmount: parseInt(tokenAmount),
-      dollarAmount: parseInt(dollarAmount),
-    });
-    ordersStore.addOrder(newOrder);
+  const clearForm = () => {
+    setAmountDollars('0');
+    setAmountTokens('0');
   };
+
+  const createOrder = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const response = await fetch('http://localhost:3000/orders', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ amountTokens, amountDollars }),
+      });
+
+      if (response.ok) {
+        const newOrder = await response.json();
+        ordersStore.addOrder(new Order(newOrder));
+        clearForm();
+      } else {
+        console.error('Failed to create order');
+      }
+    } catch (error) {
+      console.error('Error creating order:', error);
+    }
+  };
+
+  const switchInput = () => {};
 
   return (
     <div className="">
+      <h2>Add new order:</h2>
       <form onSubmit={createOrder}>
         <input
           placeholder="token"
           type="number"
           min="0"
-          value={tokenAmount}
-          onChange={(e) => setTokenAmount(e.target.value)}
+          value={amountTokens}
+          onChange={(e) => setAmountTokens(e.target.value)}
         />
+        <button onClick={switchInput}>{`<->`}</button>
         <input
           placeholder="dollar"
           type="number"
           min="0"
-          value={dollarAmount}
-          onChange={(e) => setDollarAmount(e.target.value)}
+          value={amountDollars}
+          onChange={(e) => setAmountDollars(e.target.value)}
         />
         <button className="btn btn-primary" type="submit">
           Create Order
