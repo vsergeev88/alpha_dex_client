@@ -11,6 +11,7 @@ const NewOrderForm: React.FC = observer(() => {
   const dollarsInputRef = React.useRef<HTMLInputElement>(null);
   const [amountTokens, setAmountTokens] = useState<number | null>(null);
   const [amountDollars, setAmountDollars] = useState<number | null>(null);
+  const lastActiveInputRef = React.useRef<HTMLInputElement | null>(null);
 
   useRateRecalculation({
     amountDollars,
@@ -22,8 +23,8 @@ const NewOrderForm: React.FC = observer(() => {
   });
 
   const clearForm = () => {
-    setAmountDollars(0);
-    setAmountTokens(0);
+    setAmountDollars(null);
+    setAmountTokens(null);
   };
 
   const createOrder = async (e: React.FormEvent) => {
@@ -38,21 +39,40 @@ const NewOrderForm: React.FC = observer(() => {
     clearForm();
   };
 
-  const switchInput = (e: React.FormEvent) => {
+  const switchInput = (
+    e: React.FormEvent<HTMLButtonElement | HTMLInputElement>
+  ) => {
     e.preventDefault();
+    e.stopPropagation();
+    if (
+      !lastActiveInputRef.current ||
+      lastActiveInputRef.current === tokensInputRef.current
+    ) {
+      dollarsInputRef.current?.focus();
+    } else {
+      tokensInputRef.current?.focus();
+    }
+  };
+
+  const commonInputProps = {
+    type: 'float',
+    min: '0',
   };
 
   return (
     <div className="p-4 card shadow-md bg-accent-content">
-      <h2 className="text-2xl text-accent mb-4">Buy crypto</h2>
+      <h2 className="text-2xl text-accent mb-4">Купить токены</h2>
       <form onSubmit={createOrder}>
         <div className="flex gap-4 mb-4 items-center">
           <AccentInput
+            label="Количество токенов"
             ref={tokensInputRef}
+            {...commonInputProps}
             placeholder="tokens"
-            type="float"
-            min="0"
             value={amountTokens ?? ''}
+            onFocus={() =>
+              (lastActiveInputRef.current = tokensInputRef.current)
+            }
             onChange={(e) => setAmountTokens(parseFloat(e.target.value))}
           />
           <IconButton
@@ -60,11 +80,14 @@ const NewOrderForm: React.FC = observer(() => {
             onClick={switchInput}
           >{`<->`}</IconButton>
           <AccentInput
+            label="Сумма в долларах"
             ref={dollarsInputRef}
+            {...commonInputProps}
             placeholder="dollars"
-            type="float"
-            min="0"
             value={amountDollars ?? ''}
+            onFocus={() =>
+              (lastActiveInputRef.current = dollarsInputRef.current)
+            }
             onChange={(e) => setAmountDollars(parseFloat(e.target.value))}
           />
         </div>
@@ -73,7 +96,7 @@ const NewOrderForm: React.FC = observer(() => {
             type="submit"
             disabled={ordersStore.isLoading || !amountTokens || !amountDollars}
           >
-            Create Order
+            Создать ордер
           </AccentButton>
         </div>
       </form>

@@ -21,17 +21,19 @@ export const useRateRecalculation = ({
     tokenRateStore: { tokenRate },
   } = useStores();
 
+  const round = (value: number) => Math.round(value * 10000) / 10000;
+
   useEffect(() => {
     if (dollarsInputRef.current !== document.activeElement || !amountDollars) {
       return;
     }
-    setAmountTokens(amountDollars * tokenRate);
+    setAmountTokens(round(amountDollars * tokenRate));
   }, [amountDollars, tokenRate, dollarsInputRef]);
 
   useEffect(() => {
     if (tokensInputRef.current !== document.activeElement || !amountTokens) {
       return;
     }
-    setAmountDollars(amountTokens * tokenRate);
+    setAmountDollars(round(amountTokens * tokenRate));
   }, [amountTokens, tokenRate, tokensInputRef]);
 };

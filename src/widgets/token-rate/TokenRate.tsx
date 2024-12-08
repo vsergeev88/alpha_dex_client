@@ -8,10 +8,11 @@ const TokenRate: React.FC = observer(() => {
   } = useStores();
 
   return (
-    <div className="stats shadow">
+    <div className="stats">
       <div className="stat">
-        <div className="stat-title">Current rate</div>
+        <div className="stat-title">Текущий курс</div>
         <div className="stat-value">
+          1 TKN ={' '}
           {tokenRate ? (
             `$ ${tokenRate}`
           ) : (
