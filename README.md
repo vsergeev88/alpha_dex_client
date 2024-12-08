@@ -1,50 +1,42 @@
-# React + TypeScript + Vite
+# Alpha DEX Test Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Author
 
-Currently, two official plugins are available:
+Sergeev Valentin  
+Telegram: [@destriero](https://t.me/destriero)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Description
 
-## Expanding the ESLint configuration
+Test project for implementing the Alpha DEX client functionality.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Installation and Setup
 
-- Configure the top-level `parserOptions` property like this:
+### Prerequisites
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
-```
+1. Node.js version 16 or higher.
+2. npm or yarn package manager.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### Installation Steps
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react';
+1. Clone the repository and install the dependencies.:
+   ```bash
+   git clone <repository_link>
+   cd alpha_dex_client
+   npm install
+   ```
+2. Ask administrator for server app and run the development server.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-});
-```
+3. Use CORS plugin for your browser to allow requests to the server.
+
+### Technologies Used
+
+- React for UI.
+- MobX for state management.
+- Socket.IO for WebSocket.
+- TailwindCSS and DaisyUI for styling.
+- TypeScript for type checking.
+- Vite for build tooling.
+
+### License
+
+This project is provided as part of a test task and is not intended for commercial use.
